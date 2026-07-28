@@ -1,1 +1,337 @@
+/* ===== CONFIGURAÇÃO GERAL ===== */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b0b0b;
+    color: white;
+    font-family: 'Patrick Hand', cursive;
+    overflow-x: hidden;
+}
+
+
+/* ===== CABEÇALHO ===== */
+
+.hero {
+    min-height: 500px;
+    background:
+    linear-gradient(120deg, rgba(150,0,0,0.9), rgba(0,0,0,0.95)),
+    url("assets/bg-city.png");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-bottom: 10px solid white;
+
+    transform: skewY(-3deg);
+}
+
+
+.titulo {
+    text-align: center;
+    transform: skewY(3deg);
+}
+
+
+.titulo h1 {
+
+    font-family: 'Bangers', cursive;
+    font-size: 90px;
+    color: white;
+
+    letter-spacing: 5px;
+
+    text-shadow:
+    8px 8px 0 black,
+    -3px -3px 0 #d90000;
+
+}
+
+
+.titulo h2 {
+
+    font-family: 'Bangers', cursive;
+
+    font-size: 65px;
+
+    color: #e60000;
+
+    text-shadow:
+    5px 5px 0 white,
+    8px 8px 0 black;
+
+}
+
+
+.slogan {
+
+    margin-top: 30px;
+
+    font-size: 30px;
+
+}
+
+
+/* ===== SEÇÕES ===== */
+
+
+main {
+
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+}
+
+
+.caixa {
+
+    background: #111;
+
+    border: 5px solid white;
+
+    border-left: 15px solid #d60000;
+
+    margin: 50px 0;
+
+    padding: 40px;
+
+    box-shadow:
+    15px 15px 0 #d60000;
+
+}
+
+
+.caixa h2,
+.galeria h2 {
+
+    font-family: 'Bangers', cursive;
+
+    font-size: 55px;
+
+    color: #e00000;
+
+    margin-bottom: 20px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.caixa p,
+.caixa li {
+
+    font-size: 25px;
+
+    line-height: 1.5;
+
+}
+
+
+ul {
+
+    list-style: none;
+
+}
+
+
+
+/* ===== BANNER ===== */
+
+
+.banner {
+
+    margin: 60px 0;
+
+}
+
+
+.banner img {
+
+    width:100%;
+
+    border: 8px solid white;
+
+    box-shadow:
+    15px 15px 0 red;
+
+}
+
+
+
+/* ===== CARDS ===== */
+
+
+.cards {
+
+    display:grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap:30px;
+
+}
+
+
+.card {
+
+    background:#050505;
+
+    border:4px solid white;
+
+    padding:30px;
+
+    transform: rotate(-2deg);
+
+}
+
+
+.card:nth-child(even){
+
+    transform:rotate(2deg);
+
+}
+
+
+.card h3 {
+
+    color:red;
+
+    font-size:35px;
+
+    margin-bottom:15px;
+
+}
+
+
+.card p {
+
+    font-size:22px;
+
+}
+
+
+
+/* ===== GALERIA ===== */
+
+
+.galeria {
+
+    margin:50px 0;
+
+    background:#111;
+
+    border:5px solid white;
+
+    padding:40px;
+
+}
+
+
+
+.imagens {
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+
+.imagens img {
+
+    width:100%;
+
+    height:200px;
+
+    object-fit:cover;
+
+    border:5px solid red;
+
+}
+
+
+
+/* ===== RODAPÉ ===== */
+
+
+footer {
+
+    background:red;
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+
+    font-size:25px;
+
+    margin-top:80px;
+
+}
+
+
+
+/* ===== CELULAR ===== */
+
+
+@media(max-width:800px){
+
+
+.titulo h1{
+
+    font-size:55px;
+
+}
+
+
+.titulo h2{
+
+    font-size:40px;
+
+}
+
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+
+.imagens{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+.caixa{
+
+    padding:25px;
+
+}
+
+
+.caixa h2,
+.galeria h2{
+
+    font-size:40px;
+
+}
+
+
+}
