@@ -2,7 +2,18 @@
 
 @font-face {
     font-family: 'Persona5Menu';
-    src: url('https://fontspark.com/wp-content/uploads/2023/02/Persona5MenuFontPrototype-Regular.ttf') format('truetype');
+    /*
+      Recommended: add the font files to the repo at /assets/:
+        - Persona5MenuFontPrototype.woff2 (preferred)
+        - Persona5MenuFontPrototype.woff
+        - Persona5MenuFontPrototype-Regular.ttf (fallback)
+      The src below tries local system copies first, then woff2/woff/ttf from the site, and finally the remote URL as a last resort.
+    */
+    src: local('Persona5Menu'), local('Persona 5 Menu'),
+         url('assets/Persona5MenuFontPrototype.woff2') format('woff2'),
+         url('assets/Persona5MenuFontPrototype.woff') format('woff'),
+         url('assets/Persona5MenuFontPrototype-Regular.ttf') format('truetype'),
+         url('https://fontspark.com/wp-content/uploads/2023/02/Persona5MenuFontPrototype-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -51,7 +62,8 @@ body {
 
 .titulo h1 {
 
-    font-family: 'Persona5Menu', cursive;
+    /* Ensure Persona5Menu is requested first. If the font fails to load the browser will fall back to Patrick Hand then generic cursive. */
+    font-family: 'Persona5Menu', 'Patrick Hand', cursive;
     font-size: 90px;
     color: white;
 
@@ -66,7 +78,7 @@ body {
 
 .titulo h2 {
 
-    font-family: 'Persona5Menu', cursive;
+    font-family: 'Persona5Menu', 'Patrick Hand', cursive;
 
     font-size: 65px;
 
@@ -123,7 +135,7 @@ main {
 .caixa h2,
 .galeria h2 {
 
-    font-family: 'Persona5Menu', cursive;
+    font-family: 'Persona5Menu', 'Patrick Hand', cursive;
 
     font-size: 55px;
 
@@ -149,6 +161,7 @@ main {
 ul {
 
     list-style: none;
+
 
 }
 
@@ -229,7 +242,6 @@ ul {
 }
 
 
-
 /* ===== GALERIA ===== */
 
 
@@ -244,7 +256,6 @@ ul {
     padding:40px;
 
 }
-
 
 
 .imagens {
@@ -271,7 +282,6 @@ ul {
 }
 
 
-
 /* ===== RODAPÉ ===== */
 
 
@@ -292,54 +302,34 @@ footer {
 }
 
 
-
 /* ===== CELULAR ===== */
 
 
 @media(max-width:800px){
 
-
 .titulo h1{
-
     font-size:55px;
-
 }
-
 
 .titulo h2{
-
     font-size:40px;
-
 }
-
 
 .cards{
-
     grid-template-columns:1fr;
-
 }
-
 
 .imagens{
-
     grid-template-columns:repeat(2,1fr);
-
 }
-
 
 .caixa{
-
     padding:25px;
-
 }
-
 
 .caixa h2,
 .galeria h2{
-
     font-size:40px;
-
 }
-
 
 }
