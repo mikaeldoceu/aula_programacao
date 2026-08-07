@@ -10,8 +10,8 @@
       The src below tries local system copies first, then woff2/woff/ttf from the site, and finally the remote URL as a last resort.
     */
     src: local('Persona5Menu'), local('Persona 5 Menu'),
-         url('assets/Persona5MenuFontPrototype.woff2') format('woff2'),
-         url('assets/Persona5MenuFontPrototype.woff') format('woff'),
+         url('assets/Persona5MenuFontPrototype.ttf') format('truetype'),
+         url('assets/Persona5MenuFontPrototype.ttf') format('truetype'),
          url('assets/Persona5MenuFontPrototype-Regular.ttf') format('truetype'),
          url('https://fontspark.com/wp-content/uploads/2023/02/Persona5MenuFontPrototype-Regular.ttf') format('truetype');
     font-weight: normal;
