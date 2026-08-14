@@ -43,7 +43,7 @@ body {
 
     background-size: cover;
     background-position: center;
-    background-blend-mode: multiply;
+    background-blend-mode: overlay;
 
     display: flex;
     align-items: center;
