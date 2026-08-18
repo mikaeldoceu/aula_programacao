@@ -1,23 +1,27 @@
-/* ===== CONFIGURAÇÃO GERAL ===== */
+/* =========================================================
+   PERSONA 5 — STYLE
+   Preto + Vermelho + Branco
+   Visual inspirado na estética dos menus/personagens
+   ========================================================= */
+
+
+/* ===== FONTES ===== */
 
 @font-face {
     font-family: 'Persona5Menu';
-    /*
-      Recommended: add the font files to the repo at /assets/:
-        - Persona5MenuFontPrototype.woff2 (preferred)
-        - Persona5MenuFontPrototype.woff
-        - Persona5MenuFontPrototype-Regular.ttf (fallback)
-      The src below tries local system copies first, then woff2/woff/ttf from the site, and finally the remote URL as a last resort.
-    */
-    src: local('Persona5Menu'), local('Persona 5 Menu'),
-         url('assets/Persona5MenuFontPrototype.ttf') format('truetype'),
-         url('assets/Persona5MenuFontPrototype.ttf') format('truetype'),
-         url('assets/Persona5MenuFontPrototype-Regular.ttf') format('truetype'),
-         url('https://fontspark.com/wp-content/uploads/2023/02/Persona5MenuFontPrototype-Regular.ttf') format('truetype');
+    src:
+        local('Persona5Menu'),
+        local('Persona 5 Menu'),
+        url('assets/Persona5MenuFontPrototype.woff2') format('woff2'),
+        url('assets/Persona5MenuFontPrototype.woff') format('woff'),
+        url('assets/Persona5MenuFontPrototype-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
+
+
+/* ===== RESET ===== */
 
 * {
     margin: 0;
@@ -25,312 +29,961 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background: #0b0b0b;
-    color: white;
-    font-family: 'Patrick Hand', cursive;
+    background: #050505;
+    color: #fff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
     overflow-x: hidden;
+
+    /* Pequena textura */
+    background-image:
+        radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 5px 5px;
 }
 
 
-/* ===== CABEÇALHO ===== */
+/* ===== VARIÁVEIS ===== */
+
+:root {
+    --red: #e60012;
+    --dark-red: #a8000d;
+    --black: #050505;
+    --white: #fff;
+    --gray: #151515;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero {
-    min-height: 500px;
-    background:
-    linear-gradient(120deg, rgba(110,0,0,0.9), rgba(0,0,0,0.95)),
-    url('assets/bg-city.png');
+    position: relative;
 
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: overlay;
+    min-height: 600px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-bottom: 10px solid white;
+    overflow: hidden;
 
+    background:
+        linear-gradient(
+            120deg,
+            rgba(230, 0, 18, 0.88),
+            rgba(0, 0, 0, 0.96) 55%
+        ),
+        url('assets/bg-city.png');
+
+    background-size: cover;
+    background-position: center;
+
+    border-bottom: 14px solid #fff;
+
+    /* Inclinação característica */
     transform: skewY(-3deg);
+
+    box-shadow:
+        0 20px 0 var(--red),
+        0 35px 0 #000;
+}
+
+
+/* Mancha vermelha decorativa */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    right: -250px;
+    top: -300px;
+
+    background: var(--red);
+
+    opacity: .75;
+
+    transform: rotate(25deg);
+
+    box-shadow:
+        -30px 30px 0 #000,
+        -60px 60px 0 rgba(255,255,255,.9);
+}
+
+
+/* Faixa diagonal */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 150%;
+    height: 80px;
+
+    left: -20%;
+    bottom: 40px;
+
+    background: #000;
+
+    transform: rotate(-4deg);
+
+    opacity: .9;
 }
 
 
 .titulo {
+    position: relative;
+    z-index: 2;
+
     text-align: center;
-    transform: skewY(3deg);
+
+    transform: skewY(3deg) rotate(-2deg);
+
+    padding: 30px;
 }
 
 
+/* ===== TÍTULO ===== */
+
 .titulo h1 {
+    font-family: 'Persona5Menu', Impact, Haettenschweiler, sans-serif;
 
-    /* Ensure Persona5Menu is requested first. If the font fails to load the browser will fall back to Patrick Hand then generic cursive. */
-    font-family: 'Persona5Menu', 'Patrick Hand', cursive;
-    font-size: 90px;
-    color: white;
+    font-size: clamp(60px, 10vw, 130px);
 
-    letter-spacing: 5px;
+    line-height: .8;
+
+    color: #fff;
+
+    text-transform: uppercase;
+
+    letter-spacing: -4px;
+
+    transform: rotate(-3deg) skewX(-8deg);
+
+    /* Contorno extremamente pesado */
+    -webkit-text-stroke: 3px #000;
 
     text-shadow:
-    8px 8px 0 black,
-    -3px -3px 0 #d90000;
+        10px 10px 0 #000,
+        15px 15px 0 var(--red),
+        -4px -4px 0 var(--red);
 
+    filter: drop-shadow(4px 4px 0 #000);
 }
 
 
 .titulo h2 {
+    position: relative;
 
-    font-family: 'Persona5Menu', 'Patrick Hand', cursive;
+    display: inline-block;
 
-    font-size: 65px;
+    margin-top: 25px;
 
-    color: #e60000;
+    padding: 5px 25px;
+
+    font-family: 'Persona5Menu', Impact, sans-serif;
+
+    font-size: clamp(40px, 7vw, 80px);
+
+    line-height: .9;
+
+    color: var(--red);
+
+    text-transform: uppercase;
+
+    transform: rotate(-4deg) skewX(-10deg);
+
+    -webkit-text-stroke: 2px #000;
 
     text-shadow:
-    5px 5px 0 white,
-    8px 8px 0 black;
-
+        5px 5px 0 #fff,
+        9px 9px 0 #000;
 }
 
+
+/* Faixa atrás do subtítulo */
+
+.titulo h2::before {
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    inset: 5px -30px;
+
+    background: #fff;
+
+    transform: skewX(-15deg) rotate(-1deg);
+
+    box-shadow: 10px 10px 0 #000;
+}
+
+
+/* ===== SLOGAN ===== */
 
 .slogan {
+    margin-top: 45px;
 
-    margin-top: 30px;
+    font-family: Impact, Haettenschweiler, sans-serif;
 
-    font-size: 30px;
+    font-size: clamp(20px, 3vw, 32px);
 
-}
-
-
-/* ===== SEÇÕES ===== */
-
-
-main {
-
-    width: 90%;
-
-    max-width: 1200px;
-
-    margin: auto;
-
-}
-
-
-.caixa {
-
-    background: #111;
-
-    border: 5px solid white;
-
-    border-left: 15px solid #d60000;
-
-    margin: 50px 0;
-
-    padding: 40px;
-
-    box-shadow:
-    15px 15px 0 #d60000;
-
-}
-
-
-.caixa h2,
-.galeria h2 {
-
-    font-family: 'Persona5Menu', 'Patrick Hand', cursive;
-
-    font-size: 55px;
-
-    color: #e00000;
-
-    margin-bottom: 20px;
+    text-transform: uppercase;
 
     letter-spacing: 3px;
 
+    color: #fff;
+
+    transform: rotate(-2deg);
+
+    text-shadow:
+        4px 4px 0 #000;
+
+    background: var(--red);
+
+    display: inline-block;
+
+    padding: 8px 20px;
+
+    box-shadow:
+        8px 8px 0 #000;
 }
 
+
+/* =========================================================
+   CONTEÚDO
+   ========================================================= */
+
+main {
+    position: relative;
+
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 80px auto;
+}
+
+
+/* ===== CAIXAS ===== */
+
+.caixa {
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            #171717 0%,
+            #090909 100%
+        );
+
+    border: 5px solid #fff;
+
+    border-left: 18px solid var(--red);
+
+    margin: 70px 0;
+
+    padding: 45px;
+
+    transform: rotate(-1deg);
+
+    box-shadow:
+        15px 15px 0 var(--red),
+        25px 25px 0 #000;
+}
+
+
+/* Recorte diagonal */
+
+.caixa::before {
+    content: "";
+
+    position: absolute;
+
+    top: -5px;
+    right: -5px;
+
+    width: 120px;
+    height: 35px;
+
+    background: var(--red);
+
+    transform: skewX(-25deg);
+}
+
+
+/* Número/decoração */
+
+.caixa::after {
+    content: "★";
+
+    position: absolute;
+
+    right: 25px;
+    bottom: 15px;
+
+    font-size: 70px;
+
+    color: rgba(230, 0, 18, .12);
+
+    transform: rotate(-15deg);
+}
+
+
+/* ===== TÍTULOS ===== */
+
+.caixa h2,
+.galeria h2 {
+    position: relative;
+
+    display: inline-block;
+
+    font-family: 'Persona5Menu', Impact, sans-serif;
+
+    font-size: clamp(38px, 5vw, 60px);
+
+    color: #fff;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 30px;
+
+    transform: rotate(-2deg) skewX(-7deg);
+
+    -webkit-text-stroke: 2px #000;
+
+    text-shadow:
+        6px 6px 0 var(--red),
+        10px 10px 0 #000;
+}
+
+
+/* ===== TEXTO ===== */
 
 .caixa p,
 .caixa li {
+    font-size: 20px;
 
-    font-size: 25px;
+    line-height: 1.6;
 
-    line-height: 1.5;
-
+    color: #eee;
 }
 
+.caixa p {
+    margin-bottom: 15px;
+}
+
+
+/* ===== LISTA ===== */
 
 ul {
-
     list-style: none;
+}
 
+.caixa li {
+    position: relative;
 
+    padding-left: 35px;
+
+    margin: 12px 0;
+}
+
+.caixa li::before {
+    content: "★";
+
+    position: absolute;
+
+    left: 0;
+
+    color: var(--red);
+
+    font-size: 20px;
+
+    transform: rotate(-15deg);
 }
 
 
-
-/* ===== BANNER ===== */
-
+/* =========================================================
+   BANNER
+   ========================================================= */
 
 .banner {
+    position: relative;
 
-    margin: 60px 0;
+    margin: 90px 0;
 
+    transform: rotate(1.5deg);
+}
+
+
+.banner::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -15px;
+
+    background: var(--red);
+
+    z-index: -1;
+
+    transform: rotate(-2deg);
+
+    box-shadow:
+        12px 12px 0 #000;
 }
 
 
 .banner img {
+    display: block;
 
-    width: 100%
+    width: 100%;
 
-    border: 8px solid white;
+    border: 8px solid #fff;
 
     box-shadow:
-    15px 15px 0 red;
-
+        12px 12px 0 #000;
 }
 
 
-
-/* ===== CARDS ===== */
-
+/* =========================================================
+   CARDS
+   ========================================================= */
 
 .cards {
+    display: grid;
 
-    display:grid;
+    grid-template-columns: repeat(2, 1fr);
 
-    grid-template-columns: repeat(2,1fr);
+    gap: 40px;
 
-    gap:30px;
-
+    margin-top: 30px;
 }
 
 
 .card {
+    position: relative;
 
-    background:#050505;
+    background:
+        linear-gradient(
+            135deg,
+            #161616,
+            #050505
+        );
 
-    border:4px solid white;
+    border: 5px solid #fff;
 
-    padding:30px;
+    padding: 35px;
+
+    min-height: 200px;
 
     transform: rotate(-2deg);
 
+    box-shadow:
+        10px 10px 0 var(--red),
+        18px 18px 0 #000;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
 }
 
 
-.card:nth-child(even){
+.card:nth-child(even) {
+    transform: rotate(2deg);
 
-    transform:rotate(2deg);
+    box-shadow:
+        -10px 10px 0 var(--red),
+        -18px 18px 0 #000;
+}
 
+
+.card:hover {
+    transform:
+        rotate(0deg)
+        translateY(-8px)
+        scale(1.02);
+
+    box-shadow:
+        14px 14px 0 var(--red),
+        22px 22px 0 #000;
+}
+
+
+/* Faixa vermelha */
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 15px;
+    right: -20px;
+
+    width: 100px;
+    height: 12px;
+
+    background: var(--red);
+
+    transform: rotate(-10deg);
 }
 
 
 .card h3 {
+    font-family: 'Persona5Menu', Impact, sans-serif;
 
-    color:red;
+    color: var(--red);
 
-    font-size:35px;
+    font-size: 36px;
 
-    margin-bottom:15px;
+    text-transform: uppercase;
 
+    margin-bottom: 15px;
+
+    transform: skewX(-8deg);
+
+    text-shadow:
+        3px 3px 0 #000;
 }
 
 
 .card p {
+    font-size: 19px;
 
-    font-size:22px;
+    line-height: 1.5;
 
+    color: #ddd;
 }
 
 
-/* ===== GALERIA ===== */
-
+/* =========================================================
+   GALERIA
+   ========================================================= */
 
 .galeria {
+    position: relative;
 
-    margin:50px 0;
+    margin: 80px 0;
 
-    background:#111;
+    background: #0b0b0b;
 
-    border:5px solid white;
+    border: 6px solid #fff;
 
-    padding:40px;
+    padding: 45px;
 
+    transform: rotate(-1deg);
+
+    box-shadow:
+        15px 15px 0 var(--red),
+        25px 25px 0 #000;
 }
 
 
 .imagens {
+    display: grid;
 
-    display:grid;
+    grid-template-columns: repeat(4, 1fr);
 
-    grid-template-columns:repeat(4,1fr);
-
-    gap:20px;
-
+    gap: 25px;
 }
 
 
 .imagens img {
+    display: block;
 
-    width:100%;
+    width: 100%;
 
-    height:200px;
+    height: 220px;
 
-    object-fit:cover;
+    object-fit: cover;
 
-    border:5px solid red;
+    border: 5px solid #fff;
 
+    background: #000;
+
+    filter:
+        grayscale(20%)
+        contrast(1.15);
+
+    transform: rotate(-2deg);
+
+    box-shadow:
+        8px 8px 0 var(--red);
+
+    transition:
+        transform .2s ease,
+        filter .2s ease;
 }
 
 
-/* ===== RODAPÉ ===== */
+.imagens img:nth-child(even) {
+    transform: rotate(2deg);
+}
 
+
+.imagens img:hover {
+    z-index: 5;
+
+    transform:
+        rotate(0deg)
+        scale(1.08);
+
+    filter:
+        grayscale(0%)
+        contrast(1.2);
+
+    box-shadow:
+        12px 12px 0 #000;
+}
+
+
+/* =========================================================
+   BOTÕES / LINKS
+   ========================================================= */
+
+a {
+    color: #fff;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: .2s;
+}
+
+a:hover {
+    color: var(--red);
+
+    text-shadow:
+        2px 2px 0 #fff;
+}
+
+
+/* Se você tiver botões */
+
+button,
+.btn {
+    position: relative;
+
+    background: var(--red);
+
+    color: #fff;
+
+    border: 4px solid #fff;
+
+    padding: 12px 25px;
+
+    font-family: Impact, sans-serif;
+
+    font-size: 20px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transform: skewX(-10deg) rotate(-1deg);
+
+    box-shadow:
+        7px 7px 0 #000;
+
+    transition: .2s;
+}
+
+button:hover,
+.btn:hover {
+    background: #fff;
+
+    color: #000;
+
+    transform:
+        skewX(-10deg)
+        rotate(-1deg)
+        translate(-3px, -3px);
+
+    box-shadow:
+        10px 10px 0 var(--red);
+}
+
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
 
 footer {
+    position: relative;
 
-    background:red;
+    background: var(--red);
 
-    color:white;
+    color: #fff;
 
-    text-align:center;
+    text-align: center;
 
-    padding:30px;
+    padding: 40px 20px;
 
-    font-size:25px;
+    font-family: Impact, Haettenschweiler, sans-serif;
 
-    margin-top:80px;
+    font-size: 24px;
 
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    margin-top: 100px;
+
+    border-top: 8px solid #fff;
+
+    transform: skewY(-2deg);
+
+    box-shadow:
+        0 -12px 0 #000;
 }
 
 
-/* ===== CELULAR ===== */
-
-
-@media(max-width:800px){
-
-.titulo h1{
-    font-size:55px;
+footer > * {
+    transform: skewY(2deg);
 }
 
-.titulo h2{
-    font-size:40px;
+
+/* =========================================================
+   EFEITO DE FAIXAS DIAGONAIS
+   ========================================================= */
+
+main::before {
+    content: "";
+
+    position: fixed;
+
+    z-index: -1;
+
+    width: 500px;
+    height: 80px;
+
+    left: -150px;
+    top: 45%;
+
+    background: var(--red);
+
+    transform: rotate(-25deg);
+
+    opacity: .18;
 }
 
-.cards{
-    grid-template-columns:1fr;
+
+main::after {
+    content: "";
+
+    position: fixed;
+
+    z-index: -1;
+
+    width: 700px;
+    height: 100px;
+
+    right: -250px;
+    top: 65%;
+
+    background: #fff;
+
+    transform: rotate(-25deg);
+
+    opacity: .06;
 }
 
-.imagens{
-    grid-template-columns:repeat(2,1fr);
+
+/* =========================================================
+   SELEÇÃO DE TEXTO
+   ========================================================= */
+
+::selection {
+    background: var(--red);
+    color: #fff;
 }
 
-.caixa{
-    padding:25px;
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 12px;
 }
 
-.caixa h2,
-.galeria h2{
-    font-size:40px;
+::-webkit-scrollbar-track {
+    background: #050505;
 }
 
+::-webkit-scrollbar-thumb {
+    background: var(--red);
+
+    border: 2px solid #050505;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff172b;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        min-height: 500px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .imagens {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .caixa {
+        padding: 30px;
+    }
+
+    .caixa p,
+    .caixa li {
+        font-size: 18px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 430px;
+
+        transform: skewY(-2deg);
+    }
+
+    .titulo {
+        transform: skewY(2deg) rotate(-2deg);
+
+        width: 100%;
+    }
+
+    .titulo h1 {
+        font-size: 55px;
+
+        letter-spacing: -2px;
+
+        -webkit-text-stroke: 2px #000;
+
+        text-shadow:
+            6px 6px 0 #000,
+            9px 9px 0 var(--red);
+    }
+
+    .titulo h2 {
+        font-size: 38px;
+
+        margin-top: 20px;
+    }
+
+    .slogan {
+        font-size: 16px;
+
+        margin-top: 30px;
+
+        letter-spacing: 1px;
+    }
+
+    main {
+        width: 88%;
+
+        margin-top: 60px;
+    }
+
+    .caixa {
+        margin: 50px 0;
+
+        padding: 25px;
+
+        border-width: 4px;
+
+        border-left-width: 12px;
+
+        box-shadow:
+            10px 10px 0 var(--red),
+            17px 17px 0 #000;
+    }
+
+    .caixa h2,
+    .galeria h2 {
+        font-size: 38px;
+
+        line-height: 1;
+    }
+
+    .cards {
+        gap: 30px;
+    }
+
+    .card {
+        padding: 25px;
+    }
+
+    .card h3 {
+        font-size: 30px;
+    }
+
+    .imagens {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 15px;
+    }
+
+    .imagens img {
+        height: 150px;
+
+        border-width: 4px;
+
+        box-shadow:
+            5px 5px 0 var(--red);
+    }
+
+    .galeria {
+        padding: 25px;
+    }
+
+    footer {
+        font-size: 18px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .titulo h1 {
+        font-size: 45px;
+    }
+
+    .titulo h2 {
+        font-size: 32px;
+    }
+
+    .imagens {
+        grid-template-columns: 1fr;
+    }
+
+    .imagens img {
+        height: 220px;
+    }
 }
